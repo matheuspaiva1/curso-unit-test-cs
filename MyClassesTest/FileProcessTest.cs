@@ -13,19 +13,46 @@ namespace MyClassesTest
         private string _GoodFileName;
 
         public TestContext TestContext { get; set; }
+
+        #region Test Initialize e Cleanup
+
+        [TestInitialize]
+        public void TestInitialize() { 
+            if(TestContext.TestName == "FileNameDoesExists")
+            {
+                if (!string.IsNullOrEmpty(_GoodFileName))
+                {
+                    SetGoodFileName();
+                    TestContext.WriteLine($"Creating File: {_GoodFileName}");
+                    File.AppendAllText(_GoodFileName, "Some Text");
+                }
+            }
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            if (TestContext.TestName == "FileNameDoesExists")
+            {
+                if (!string.IsNullOrEmpty(_GoodFileName))
+                {
+                    TestContext.WriteLine($"Deleting File: {_GoodFileName}");
+                    File.Delete(_GoodFileName);
+                }
+            }
+        }
+
+        #endregion
+
         [TestMethod]
         public void fileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
             bool fromCall;
 
-            SetGoodFileName();
-            TestContext.WriteLine($"Creating File: {_GoodFileName}" );
-            File.AppendAllText(_GoodFileName, "Some Text");
             TestContext.WriteLine($"Testing File: {_GoodFileName}");
             fromCall = fp.FileExists(_GoodFileName);
-            TestContext.WriteLine($"Deleting File: {_GoodFileName}");
-            File.Delete(_GoodFileName);
+            
 
             Assert.IsTrue(fromCall);
         }
