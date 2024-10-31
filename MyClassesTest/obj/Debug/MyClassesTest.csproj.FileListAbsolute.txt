@@ -22,3 +22,4 @@ C:\youtube\curso-unit-test\MyClasses\MyClassesTest\obj\Debug\MyClassesTest.pdb
 C:\youtube\curso-unit-test\MyClasses\MyClassesTest\bin\Debug\MyClasses.dll
 C:\youtube\curso-unit-test\MyClasses\MyClassesTest\bin\Debug\MyClasses.pdb
 C:\youtube\curso-unit-test\MyClasses\MyClassesTest\bin\Debug\MyClassesTest.dll.config
+C:\youtube\curso-unit-test\MyClasses\MyClassesTest\bin\Debug\FileToDeploy.txt
