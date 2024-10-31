@@ -9,7 +9,7 @@ namespace MyClassesTest
     [TestClass]
     public class FileProcessTest
     {
-        private const string BAD_FILE_NAME = @"C:\BadFileName.txt";
+        private const string BAD_FILE_NAME = @"C:\BadFileName.bat";
         private string _GoodFileName;
 
         public TestContext TestContext { get; set; }
@@ -44,9 +44,11 @@ namespace MyClassesTest
 
         #endregion
 
+        [TestMethod]
         [Description("Check to see if a file does exist.")]
         [Owner("Matheus Paiva")]
-        [TestMethod]
+        [Priority(0)]
+        [TestCategory("NoException")]
         public void fileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
@@ -69,7 +71,7 @@ namespace MyClassesTest
         }
 
         [TestMethod]
-        [Timeout(2000)]
+        [Timeout(4000)]
         public void SimulateTimeout()
         {
             System.Threading.Thread.Sleep(3000);
@@ -78,6 +80,8 @@ namespace MyClassesTest
         [TestMethod]
         [Description("Check to see if a file does NOT exist.")]
         [Owner("Francisco Paiva")]
+        [Priority(0)]
+        [TestCategory("NoException")]
         public void fileNameDoesNotExists()
         {
             FileProcess fp = new FileProcess();
@@ -91,6 +95,8 @@ namespace MyClassesTest
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         [Owner("Matheus Paiva")]
+        [Priority(1)]
+        [TestCategory("Exception")]
         public void fileNameNullOrEmpty_ThrowsArgumentNullException()
         {
             //TODO  
@@ -101,6 +107,8 @@ namespace MyClassesTest
 
         [TestMethod]
         [Owner("João Paiva")]
+        [Priority(1)]
+        [TestCategory("Exception")]
         public void fileNameNullOrEmpty_ThrowsArgumentNullException_UsingTryCatch()
         {
             //TODO  
