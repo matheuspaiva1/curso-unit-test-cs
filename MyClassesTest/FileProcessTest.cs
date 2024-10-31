@@ -44,9 +44,9 @@ namespace MyClassesTest
 
         #endregion
 
-        [TestMethod]
         [Description("Check to see if a file does exist.")]
         [Owner("Matheus Paiva")]
+        [TestMethod]
         public void fileNameDoesExists()
         {
             FileProcess fp = new FileProcess();
@@ -67,8 +67,16 @@ namespace MyClassesTest
                 _GoodFileName = _GoodFileName.Replace("[AppPath]", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
             }
         }
+
         [TestMethod]
-        [Description("Check to see if a file does not exist.")]
+        [Timeout(2000)]
+        public void SimulateTimeout()
+        {
+            System.Threading.Thread.Sleep(3000);
+        }
+
+        [TestMethod]
+        [Description("Check to see if a file does NOT exist.")]
         [Owner("Francisco Paiva")]
         public void fileNameDoesNotExists()
         {
