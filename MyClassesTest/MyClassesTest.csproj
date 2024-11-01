@@ -55,6 +55,7 @@
     <Compile Include="AssertClassTest.cs" />
     <Compile Include="StringAssert.cs" />
     <Compile Include="ColectionAssertClass.cs" />
+    <Compile Include="PersonManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
