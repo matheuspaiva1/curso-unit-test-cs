@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyClasses;
+using MyClasses.PersonClasses;
 using System;
 
 namespace MyClassesTest
@@ -50,9 +51,43 @@ namespace MyClassesTest
             Assert.AreSame(x, y);
         }
 
+        [TestMethod]
+        public void AreNotSameTest()
+        {
+            FileProcess x = new FileProcess();
+            FileProcess y = new FileProcess();
+
+            Assert.AreNotSame(x, y);
+        }
 
 
 
+        #endregion
+
+        #region isInstanceOfType Test
+        [TestMethod]
+        [Owner("Matheus Paiva")]
+        public void IsInstanceOfTypeTest()
+        {
+           PersonManager mgr = new PersonManager();
+           Person per;
+
+           per = mgr.CreatePerson("Matheus", "Paiva", true);
+
+           Assert.IsInstanceOfType(per, typeof(Supervisor));
+        }
+
+        [TestMethod]
+        [Owner("Matheus Paiva")]
+        public void IsNullTest()
+        {
+            PersonManager mgr = new PersonManager();
+            Person per;
+
+            per = mgr.CreatePerson("", "Paiva", true);
+
+            Assert.IsNull(per);
+        }
         #endregion
 
 
